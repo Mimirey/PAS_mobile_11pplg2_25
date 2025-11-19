@@ -24,7 +24,7 @@ class RegisterPage extends StatelessWidget {
 
             Obx(()=>registerController.isLoading.value
             ?CircularProgressIndicator()
-            : ElevatedButton(onPressed: registerController.register, child: Text("Login"))
+            : ElevatedButton(onPressed: registerController.register, child: Text("Register"))
             )
           ],
         ),

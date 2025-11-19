@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:pas_mobile_11pplg2_25/controllers/favorite_controller.dart';
 import 'package:pas_mobile_11pplg2_25/pages.dart';
 import 'package:pas_mobile_11pplg2_25/routes.dart';
 
 void main() {
+  Get.put(FavoriteController());
   runApp(const MyApp());
 }
 

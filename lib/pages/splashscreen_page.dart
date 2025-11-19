@@ -8,8 +8,11 @@ class SplashscreenPage extends StatelessWidget {
   final splashscreenController=Get.find<SplashscreenController>();
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Ini splashscreen"),
+    return Scaffold(
+      appBar: AppBar(title: Text("ini spalshscreen"),),
+      body: Center(
+        child: Text("Ini splashscreen"),
+      ),
     );
   }
 }

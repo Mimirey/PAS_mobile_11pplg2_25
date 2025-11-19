@@ -23,7 +23,9 @@ class LoginPage extends StatelessWidget {
             ?CircularProgressIndicator()
             : ElevatedButton(onPressed: loginController.login, child: Text("Login"))
             ),
-           
+           ElevatedButton(onPressed:() {
+             Get.offAllNamed(AppRoutes.RegisterPage);
+           }, child: Text("Register"))
           ],
         ),
       ),

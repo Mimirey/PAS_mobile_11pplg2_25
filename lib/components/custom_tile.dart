@@ -5,18 +5,23 @@ class CustomTile extends StatelessWidget {
   final String language;
   final String premiered;
   final String poster;
-  const CustomTile({super.key, required this.name, required this.language, required this.poster, required this.premiered});
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  const CustomTile({super.key, required this.name, required this.language, required this.poster, required this.premiered, this.trailing, this.onTap});
 
-  @override
+
+ @override
   Widget build(BuildContext context) {
     return Card(
       color: const Color.fromARGB(76, 40, 79, 255),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
+        onTap: onTap,
+        trailing: trailing,
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset(
+          child: Image.network(
             poster,
             width: 50,
             height: 50,
@@ -30,8 +35,7 @@ class CustomTile extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        subtitle: Text("Bahasa $language - Premiere: $premiered"),
-        // onTap: onTap,
+        subtitle: Text("Bahasa $language — Premiere: $premiered"),
       ),
     );
   }
