@@ -20,24 +20,19 @@ class ShowController extends GetxController{
     const url= "https://api.tvmaze.com/shows";
 
     try {
-      //code yang berpotensi crash 
-      isLoading.value=true;
-      final response=await http.get(Uri.parse(url));
-      print("status code"+response.statusCode.toString());
-      print("status code"+response.body.toString());
+    isLoading.value = true;
+    final response = await http.get(Uri.parse(url));
+    print("status code = ${response.statusCode}");
 
-      if (response.statusCode==200) {
-        //pasang json response ke model
-        final data=jsonDecode(response.body);
-        final List standings= data['name'];
-        showStandings.assignAll(standings.map((e) => ShowModel.fromJson(e),).toList());
-      } else {
-        Get.snackbar("Error", "message error dari BE");
-      }
-    } catch (e) {
-      //tampil message error
-      Get.snackbar("erroe", e.toString());
+    if (response.statusCode == 200) {
+      final List data = jsonDecode(response.body);
+      showStandings.assignAll(data.map((e) => ShowModel.fromJson(e)).toList());
+    } else {
+      Get.snackbar("Error", "Response API bermasalah (${response.statusCode})");
     }
-    isLoading.value=false;
+  } catch (e) {
+    Get.snackbar("Error", e.toString());
+  }
+  isLoading.value = false;
   }
 }
